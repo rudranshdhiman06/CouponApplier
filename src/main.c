@@ -39,8 +39,17 @@ int main() {
     
     // Check if input is a valid integer
     if (scanf("%d", &choice) == 1 && choice >= 1 && choice <= 3) {
-        // Arrays are 0-indexed, so we subtract 1 from choice
-        totalBill = store[choice - 1].price;
+    
+    // NEW: Ask for quantity
+    printf("How many do you want?: ");
+    if (scanf("%d", &quantity) == 1 && quantity > 0) {
+        // Calculate total based on quantity
+        totalBill = store[choice - 1].price * quantity;
+    } else {
+        printf("Invalid quantity. Defaulting to 1.\n");
+        totalBill = store[choice - 1].price; // Default if input fails
+    }
+}
     } else {
         printf("Invalid selection. Exiting.\n");
         free(customerName); // Free memory before exiting
@@ -91,3 +100,4 @@ int main() {
     
     return 0;
 }
+
