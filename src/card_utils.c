@@ -6,7 +6,7 @@
 // Returns: 1 for AMEX, 2 for MASTERCARD, 3 for VISA, 4 for RUPAY, 0 for INVALID
 int identify_card_type(long card_number) {
     
-    // --- STEP 1: LUHN'S ALGORITHM (YOUR ORIGINAL CODE) ---
+    // STEP 1: LUHN'S ALGORITHM (YOUR ORIGINAL CODE)
     
     // Variables for checksum calculation
     long temp_card_number = card_number;
@@ -48,7 +48,7 @@ int identify_card_type(long card_number) {
         return 0; // Invalid checksum
     }
 
-    // --- STEP 2: CHECK PREFIXES (YOUR ORIGINAL LOGIC) ---
+    // STEP 2: CHECK PREFIXES (YOUR ORIGINAL LOGIC)
     
     // Get the first two digits (stored in temp2)
     long temp2 = card_number;
@@ -60,7 +60,7 @@ int identify_card_type(long card_number) {
     // Get the first single digit (stored in temp3)
     long temp3 = temp2 / 10;
 
-    // --- STEP 3: FINAL DECISION CHAIN ---
+    // STEP 3: FINAL DECISION CHAIN
     
     // AMEX: Starts with 34 or 37, length 15
     if ((temp2 == 34 || temp2 == 37) && digit_count == 15)
@@ -129,3 +129,4 @@ void save_receipt(char *name, int finalAmount, char *cardName) {
     fclose(file); // Always close the file to save data
     printf(">> Receipt saved successfully to receipts.txt\n");
 }
+
