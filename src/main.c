@@ -3,7 +3,7 @@
 #include "../include/card_utils.h" // Include our custom header
 
 int main() {
-    // --- 1. SETUP STORE INVENTORY (ARRAY) ---
+    // 1. SETUP STORE INVENTORY (ARRAY)
     // Minimal array usage as required
     Item store[3] = {
         {"Gaming Laptop", 80000},
@@ -15,7 +15,7 @@ int main() {
     int choice;
     long cardNumber;
 
-    // --- 2. DYNAMIC MEMORY ALLOCATION (DMA) ---
+    // 2. DYNAMIC MEMORY ALLOCATION (DMA)
     // Allocating memory for customer name on the heap [cite: 8]
     char *customerName = (char*)malloc(50 * sizeof(char));
     
@@ -30,7 +30,7 @@ int main() {
     // scanf reads string, %49s limits input to prevent overflow
     scanf("%49s", customerName);
 
-    // --- 3. STORE MENU ---
+    // 3. STORE MENU
     printf("\n--- WELCOME TO THE TECH STORE ---\n");
     printf("1. %s (Rs. %d)\n", store[0].itemName, store[0].price);
     printf("2. %s (Rs. %d)\n", store[1].itemName, store[1].price);
@@ -40,7 +40,7 @@ int main() {
     // Check if input is a valid integer
     if (scanf("%d", &choice) == 1 && choice >= 1 && choice <= 3) {
     
-    // NEW: Ask for quantity
+    // Ask for quantity
     printf("How many do you want?: ");
     if (scanf("%d", &quantity) == 1 && quantity > 0) {
         // Calculate total based on quantity
@@ -58,7 +58,7 @@ int main() {
 
     printf("\nTotal Bill: Rs. %d\n", totalBill);
     
-    // --- 4. CARD PROCESSING ---
+    // 4. CARD PROCESSING
     // We use a do-while loop to ensure we get a number, 
     // mimicking the safety of get_long
     int items_read;
@@ -83,7 +83,7 @@ int main() {
     }
 
     if (cardType != 0) {
-        // --- 5. APPLY DISCOUNT (POINTERS) ---
+        // 5. APPLY DISCOUNT
         // Pass the ADDRESS (&) of totalBill so the function can change it
         apply_discount(&totalBill, cardType);
         
@@ -100,4 +100,5 @@ int main() {
     
     return 0;
 }
+
 
