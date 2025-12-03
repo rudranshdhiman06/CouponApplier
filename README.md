@@ -1,29 +1,42 @@
 # Tech Store Discount System 🛒💻
 
 ## About The Project
-Welcome to the Tech Store! This C program simulates a checkout counter where customers can buy gadgets. But the cool part isn't the shopping—it's the payment system.
+Welcome to the Tech Store! This C program simulates a checkout counter where customers can buy gadgets. The core feature is a realistic payment gateway that validates credit cards and applies special discounts based on the card type.
 
-The program acts as a real-world payment gateway. It takes a credit card number, uses math to check if it's valid (so you can't just make up numbers), and then figures out which bank issued it. Based on the card type—like AMEX or RuPay—it applies special discounts to your bill!
+It combines a store interface with a custom-built credit card validator in a single, easy-to-manage file.
 
 ## Key Features
-* **Real Card Validation:** I implemented **Luhn's Algorithm** from scratch to mathematically verify if a card number is legitimate.
-* **Card Detection:** The system checks prefixes to identify **VISA, Mastercard, AMEX**, and even **Indian RuPay cards**.
-* **Smart Discounts:** * *AMEX* users get a massive Platinum discount.
-    * *RuPay* users get a special "Native Card" discount.
-* **Under the Hood:**
-    * **Pointers:** Used to modify the bill amount directly in memory.
-    * **File Handling:** Automatically saves every transaction to a `receipts.txt` file so there's a permanent record.
+* **Real Card Validation:** Implements **Luhn's Algorithm** to mathematically verify if a credit card number is legitimate.
+* **Card Detection:** Automatically detects the card issuer based on prefixes:
+    * **AMEX:** Starts with 34 or 37.
+    * **Mastercard:** Starts with 51-55.
+    * **Visa:** Starts with 4.
+    * **RuPay:** Starts with 60 or 65 (Indian Card).
+* **Smart Discounts:**
+    * **AMEX:** 20% Platinum Discount.
+    * **RuPay:** 15% Native Card Discount.
+    * **Visa/Mastercard:** 5% Standard Discount.
+* **Project Structure:** Follows strict modular guidelines with separate `src` and `include` folders.
+
+## Folder Structure
+This project is organized to meet strict submission guidelines:
+* `src/`: Contains the main source code (`main.c`) with all store and validation logic.
+* `include/`: Contains the header file (`card_utils.h`) as per modularity rules.
+* `docs/`: Contains project documentation.
 
 ## How to Run It
-If you want to try it out, you'll need a C compiler (like GCC).
+You only need to compile the main file since all logic is self-contained.
 
-1.  Open your terminal inside this project folder.
-2.  Compile the code by running this command:
+1.  **Open your terminal** inside the project folder.
+2.  **Compile the code**:
     ```bash
-    gcc src/main.c src/card_utils.c -o store_app
+    gcc src/main.c -o store_app
     ```
-3.  Launch the store:
+3.  **Run the store**:
     ```bash
     ./store_app
     ```
-4.  Follow the on-screen prompts to buy something and try different card numbers!
+4.  Follow the prompts to enter your name, pick an item, and pay with a card number!
+
+---
+*Note: This project was created for the C Programming Major Project.*
