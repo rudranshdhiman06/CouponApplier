@@ -3,7 +3,7 @@
 #include "../include/card_utils.h"
 
 int main() {
-    // --- 1. SETUP STORE INVENTORY ---
+    // SETUP STORE INVENTORY
     // Simple array of items
     Item store[3] = {
         {"Gaming Laptop", 80000},
@@ -16,15 +16,13 @@ int main() {
     int quantity = 1;
     long cardNumber;
 
-    // --- 2. CUSTOMER NAME (SIMPLIFIED) ---
-    // Instead of malloc, we just create a bucket that can hold 50 letters.
-    // This is much safer and easier for beginners.
+    //CUSTOMER NAME
     char customerName[50];
 
     printf("Enter Customer Name: ");
     scanf("%49s", customerName); 
 
-    // --- 3. STORE MENU ---
+    // STORE MENU
     printf("\n--- WELCOME TO THE TECH STORE ---\n");
     printf("1. %s (Rs. %d)\n", store[0].itemName, store[0].price);
     printf("2. %s (Rs. %d)\n", store[1].itemName, store[1].price);
@@ -49,7 +47,7 @@ int main() {
 
     printf("\nTotal Bill for %d item(s): Rs. %d\n", quantity, totalBill);
     
-    // --- 4. CARD PROCESSING ---
+    // CARD PROCESSING
     int items_read;
     do {
         printf("Enter Card Number to Pay: ");
@@ -69,8 +67,7 @@ int main() {
     }
 
     if (cardType != 0) {
-        // --- 5. APPLY DISCOUNT (SIMPLIFIED) ---
-        // Instead of passing an address (&totalBill), we just send the value.
+        // APPLY DISCOUNT
         // The function calculates the new price and sends it back (returns it).
         totalBill = calculate_discount(totalBill, cardType);
         
@@ -85,6 +82,3 @@ int main() {
     
     return 0;
 }
-
-
-
